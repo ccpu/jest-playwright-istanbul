@@ -1,0 +1,51 @@
+{
+    "name": "jest-playwright-istanbul",
+    "description": "Collect code coverage information from end-to-end jest chromium tests.",
+    "version": "0.5.4",
+    "repository": "https://github.com/ccpu/jest-playwright-istanbul",
+    "author": "ocavue <ocavue@gmail.com>",
+    "contributors": [
+        "m.doaei <mdoaie@yahoo.co.uk>"
+    ],
+    "license": "MIT",
+    "main": "./lib/index.js",
+    "keywords": [
+        "jest",
+        "test",
+        "chromium",
+        "istanbul",
+        "jest-playwright-istanbul",
+        "e2e",
+        "coverage"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "lint": "eslint --ignore-path .gitignore --ext '.js,.jsx,.ts,.tsx'",
+        "release": "changeset publish"
+    },
+    "files": [
+        "lib"
+    ],
+    "devDependencies": {
+        "@changesets/cli": "^2.5.1",
+        "@typescript-eslint/eslint-plugin": "^2.20.0",
+        "@typescript-eslint/parser": "^2.20.0",
+        "eslint": "^6.3.0",
+        "eslint-config-prettier": "^6.10.0",
+        "eslint-plugin-prettier": "^3.1.0",
+        "jest": "^25.0.0",
+        "prettier": "^1.18.2",
+        "prettier-eslint": "^9.0.0",
+        "typescript": "~3.8.0"
+    },
+    "peerDependencies": {
+        "jest": ">=24.0.0",
+        "puppeteer": ">=1.10.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "dependencies": {
+        "istanbul-lib-report": "^3.0.0"
+    }
+}

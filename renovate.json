@@ -1,0 +1,24 @@
+{
+  "extends": [
+    "config:base",
+    ":semanticCommitTypeAll(chore)"
+  ],
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "packageRules": [
+    {
+      "packagePatterns": [
+        "*"
+      ],
+      "rangeStrategy": "widen"
+    },
+    {
+      "depTypeList": [
+        "devDependencies",
+        "peerDependencies"
+      ],
+      "rangeStrategy": "replace"
+    }
+  ]
+}
