@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-ignore */
 import { CoverageMap, createCoverageMap } from "istanbul-lib-coverage"
 import { CoverageStorage } from "./storage"
 
@@ -10,7 +11,9 @@ async function getCoverage(page: any): Promise<CoverageMap> {
 
 afterEach(async () => {
     if (process.env.JEST_PLAYWRIGHT_ISTANBUL_COVERAGE !== "true") return
+    // @ts-ignore
     if (typeof page === "undefined") return
+    // @ts-ignore
     const coverageMap = await getCoverage(page)
     coverageMap.merge(coverageStorage.read())
     coverageStorage.write(coverageMap)
