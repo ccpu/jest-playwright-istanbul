@@ -1,2 +1,2 @@
-export * from "./setCoverage"
+export * from "./collectCoverage"
 export * from "./generateCoverage"

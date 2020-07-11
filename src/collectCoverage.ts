@@ -6,7 +6,7 @@ async function getCoverage(page: any): Promise<CoverageMap> {
     return createCoverageMap(coverage)
 }
 
-export const setCoverage = async (page: any, dir?: string) => {
+export const collectCoverage = async (page: any, dir?: string) => {
     const coverageStorage = new CoverageStorage(process.env.JEST_PLAYWRIGHT_ISTANBUL_DIR || dir)
     if (typeof page === "undefined") return
     const coverageMap = await getCoverage(page)

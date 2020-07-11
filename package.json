@@ -1,7 +1,7 @@
 {
     "name": "jest-playwright-istanbul",
     "description": "Collect code coverage information from end-to-end jest chromium tests.",
-    "version": "0.5.6",
+    "version": "0.5.7",
     "repository": "https://github.com/ccpu/jest-playwright-istanbul",
     "author": "ocavue <ocavue@gmail.com>",
     "contributors": [
