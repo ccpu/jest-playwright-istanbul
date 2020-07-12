@@ -20,7 +20,7 @@ interface Options {
     include?: string[]
 }
 
-export const collectCoverage = async (page: any, options: Options) => {
+export const collectCoverage = async (page: any, options?: Options) => {
     const path =
         process.env.JEST_PLAYWRIGHT_ISTANBUL_DIR ||
         (options && options.coverageDirectory ? options.coverageDirectory : undefined)
