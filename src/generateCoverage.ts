@@ -2,9 +2,21 @@ import { CoverageStorage } from "./storage"
 import { createCoverageMap, FileCoverage } from "istanbul-lib-coverage"
 import libReport from "istanbul-lib-report"
 import reports from "istanbul-reports"
+import { ReportOptions } from "istanbul-reports"
 
-export const generateCoverage = (dir?: string) => {
-    const coverageStorage = new CoverageStorage(process.env.JEST_PLAYWRIGHT_ISTANBUL_DIR || dir)
+interface Options {
+    coverageDirectory?: string
+}
+
+export const generateCoverage = <T extends keyof ReportOptions>(
+    name: T,
+    options?: Partial<ReportOptions[T]> & Options,
+) => {
+    const path =
+        process.env.JEST_PLAYWRIGHT_ISTANBUL_DIR ||
+        (options && options.coverageDirectory ? options.coverageDirectory : undefined)
+    const coverageStorage = new CoverageStorage(path)
+
     const coverageMap = createCoverageMap({})
 
     const mergeFileCoverage = ([filename, fileCoverage]: [string, FileCoverage]) => {
@@ -21,6 +33,6 @@ export const generateCoverage = (dir?: string) => {
         dir: "./coverage",
         coverageMap,
     })
-    const report = reports.create("html")
+    const report = reports.create(name, options)
     ;(report as any).execute(context)
 }
