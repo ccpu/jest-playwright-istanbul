@@ -5,7 +5,7 @@
     "repository": "https://github.com/ccpu/jest-playwright-istanbul",
     "author": "ocavue <ocavue@gmail.com>",
     "contributors": [
-        "m.doaei <mdoaie@yahoo.co.uk>"
+        "m.doaie <mdoaie@yahoo.co.uk>"
     ],
     "license": "MIT",
     "main": "./lib/index.js",
