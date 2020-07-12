@@ -1,13 +1,30 @@
 import { CoverageMap, createCoverageMap } from "istanbul-lib-coverage"
 import { CoverageStorage } from "./storage"
+import multimatch from "multimatch"
 
-async function getCoverage(page: any): Promise<CoverageMap> {
-    const coverage = await page.evaluate(() => (window as any).__coverage__)
+async function getCoverage(page: any, include?: string[]): Promise<CoverageMap> {
+    let coverage = await page.evaluate(() => (window as any).__coverage__)
+    if (include && include.length) {
+        const included = multimatch(Object.keys(coverage), include)
+        coverage = included.reduce((obj, path) => {
+            obj[path] = coverage[path]
+            return obj
+        }, {} as { [key: string]: unknown })
+    }
+
     return createCoverageMap(coverage)
 }
 
-export const collectCoverage = async (page: any, dir?: string) => {
-    const coverageStorage = new CoverageStorage(process.env.JEST_PLAYWRIGHT_ISTANBUL_DIR || dir)
+interface Options {
+    coverageDirectory?: string
+    include?: string[]
+}
+
+export const collectCoverage = async (page: any, options: Options) => {
+    const path =
+        process.env.JEST_PLAYWRIGHT_ISTANBUL_DIR ||
+        (options && options.coverageDirectory ? options.coverageDirectory : undefined)
+    const coverageStorage = new CoverageStorage(path)
     if (typeof page === "undefined") return
     const coverageMap = await getCoverage(page)
     coverageMap.merge(coverageStorage.read())
