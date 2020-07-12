@@ -1,11 +1,13 @@
 import { CoverageMap, createCoverageMap } from "istanbul-lib-coverage"
 import { CoverageStorage } from "./storage"
 import multimatch from "multimatch"
+import path from "path"
 
 async function getCoverage(page: any, include?: string[]): Promise<CoverageMap> {
     let coverage = await page.evaluate(() => (window as any).__coverage__)
     if (include && include.length) {
-        const included = multimatch(Object.keys(coverage), include)
+        const paths = Object.keys(coverage).map(x => x.split(path.sep).join("/"))
+        const included = multimatch(paths, include).map(x => x.split("/").join(path.sep))
         coverage = included.reduce((obj, path) => {
             obj[path] = coverage[path]
             return obj
