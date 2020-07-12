@@ -26,7 +26,7 @@ export const collectCoverage = async (page: any, options?: Options) => {
         (options && options.coverageDirectory ? options.coverageDirectory : undefined)
     const coverageStorage = new CoverageStorage(path)
     if (typeof page === "undefined") return
-    const coverageMap = await getCoverage(page)
+    const coverageMap = await getCoverage(page, options && options.include)
     coverageMap.merge(coverageStorage.read())
     coverageStorage.write(coverageMap)
 }
