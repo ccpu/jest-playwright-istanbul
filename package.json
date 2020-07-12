@@ -48,7 +48,6 @@
     },
     "dependencies": {
         "istanbul-lib-report": "^3.0.0",
-        "minimatch": "^3.0.4",
         "multimatch": "^4.0.0"
     }
 }
