@@ -55,9 +55,9 @@ export = class ChromiumIstanbul extends CoverageReporter {
                 }
             }
 
-            Object.entries(this.coverageStorage.read()).map(mergeFileCoverage)
+            Object.entries(this.coverageStorage.read()).forEach(mergeFileCoverage)
             if (testResult.coverage) {
-                Object.entries(testResult.coverage).map(mergeFileCoverage)
+                Object.entries(testResult.coverage).forEach(mergeFileCoverage)
             }
             if (Object.keys(coverage).length) {
                 testResult.coverage = coverage.data

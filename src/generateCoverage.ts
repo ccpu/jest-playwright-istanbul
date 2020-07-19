@@ -23,7 +23,7 @@ export const generateCoverage = <T extends keyof ReportOptions>(
         coverageMap.merge({ [filename]: fileCoverage })
     }
 
-    Object.entries(coverageStorage.read()).map(mergeFileCoverage)
+    Object.entries(coverageStorage.read()).forEach(mergeFileCoverage)
 
     if (!Object.keys(coverageMap).length) {
         return
