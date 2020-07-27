@@ -1,18 +1,13 @@
-# jest-chromium-istanbul
-
-<p>
-  <a href="http://badge.fury.io/js/jest-chromium-istanbul"><img src="https://badge.fury.io/js/jest-chromium-istanbul.svg" alt="npm version"></a>
-  <a href="https://circleci.com/gh/ocavue/jest-chromium-istanbul/tree/master"><img src="https://circleci.com/gh/ocavue/jest-chromium-istanbul/tree/master.svg?&style=shield" alt="Build Status"></a>
-</p>
+# jest-playwright-istanbul
 
 > This is a fork of [ocavue/jest-puppeteer-istanbul](https://github.com/ocavue/jest-puppeteer-istanbul), if you are using puppeteer, i would suggest using original library. it has been modified and added a function to manually passing a page to a function and setting the coverage.
 
 ## Install
 
 ```bash
-yarn add -D jest-chromium-istanbul
+yarn add -D jest-playwright-istanbul
 // or
-npm install -D jest-chromium-istanbul
+npm install -D jest-playwright-istanbul
 ```
 
 ## Configure
@@ -63,12 +58,12 @@ module.exports = {
 Update your Jest configuration:
 
 -   Add `json` to `coverageReporters`. Since the defualt value of `coverageReporters` has `json` inclued, you don't need to change `coverageReporters` if you havn't specify it.
--   Add `jest-chromium-istanbul/lib/reporter` to `reporters`.
+-   Add `jest-playwright-istanbul/lib/reporter` to `reporters`.
 
 Set coverage using function as follow:
 
 ```
-import { setCoverage } from "jest-chromium-istanbul"
+import { setCoverage } from "jest-playwright-istanbul"
 
 await setCoverage(page)
 ```
@@ -77,7 +72,7 @@ Alternatively If chromium page available globally do as follow:
 
 Update your Jest configuration:
 
--   Add `jest-chromium-istanbul/lib/setup` to `setupFilesAfterEnv`.
+-   Add `jest-playwright-istanbul/lib/setup` to `setupFilesAfterEnv`.
 
 Notice:
 
@@ -88,8 +83,8 @@ A Jest configuration example:
 ```js
 {
   coverageReporters: ["json", "text", "lcov"],
-  setupFilesAfterEnv: ["jest-chromium-istanbul/lib/setup"],
-  reporters: ["default", "jest-chromium-istanbul/lib/reporter"],
+  setupFilesAfterEnv: ["jest-playwright-istanbul/lib/setup"],
+  reporters: ["default", "jest-playwright-istanbul/lib/reporter"],
   collectCoverage: true,
 }
 ```

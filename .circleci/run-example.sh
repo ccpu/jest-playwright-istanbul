@@ -5,7 +5,7 @@ set -ex
 root=$(pwd)
 cd $1
 yarn install
-cp -f /tmp/lib/* ./node_modules/jest-chromium-istanbul/lib/
+cp -f /tmp/lib/* ./node_modules/jest-playwright-istanbul/lib/
 yarn dev &
 sleep 5
 yarn test

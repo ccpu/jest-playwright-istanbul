@@ -1,4 +1,4 @@
-# jest-chromium-istanbul
+# jest-playwright-istanbul
 
 ## 0.5.3
 
